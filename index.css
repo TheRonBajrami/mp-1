@@ -15,7 +15,7 @@ body {
   font-family: "Inter", system-ui, Arial, sans-serif;
   background: #fff;
   color: #111;
-  font-size: calc(14px + 0.2vw); /* used calc() in discussion */
+  font-size: calc(16px); /* used calc() in discussion */
 }
 
 /* Centering content and organizing page parts with a CSS grid, I use three rows (header, main, footer) so spacing stays even */
@@ -32,7 +32,7 @@ body {
 /* Giving nav and main same background color */
 nav, main { 
   
-  background: #f8fbfc; }
+  background: #ffffff; }
 
 /* Styling both header and footer separately for clear identity. I'm using darkcyan with white text so they stand out */
 header, footer {
@@ -95,7 +95,7 @@ nav li {
   border: 2px solid #000;
   border-radius: 8px;
   padding: 10px 16px;
-  background: #f9f9f9;
+  background: #ffffff;
 }
 
 /* Styling nav links for bold and clear readability. I remove underlines and make them black by default */
@@ -118,7 +118,7 @@ nav li.active a {
   color: #fff; }
 nav a:focus {
   outline: 3px solid #111;
-  outline-offset: 2px;
+  
 }
 
 /* Styling main content with padding and centered text. This creates clean space for page information */
