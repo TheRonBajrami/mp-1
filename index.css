@@ -1,0 +1,227 @@
+/* Resetting margin and box sizing so all elements start consistent, I use 100% height on html/body to make layouts stretch full page  */
+* { 
+
+  margin: 0; box-sizing: border-box; 
+
+}
+html, body { 
+
+  height: 100%; 
+}
+
+/* Setting base text styles and background for the whole site. I use calc() for font size so it grows slightly with screen width */
+body {
+
+  font-family: "Inter", system-ui, Arial, sans-serif;
+  background: #fff;
+  color: #111;
+  font-size: calc(14px + 0.2vw); /* used calc() in discussion */
+}
+
+/* Centering content and organizing page parts with a CSS grid, I use three rows (header, main, footer) so spacing stays even */
+#page-wrapper {
+
+  width: 80vw;
+  margin: 0 auto;
+  height: 100%;                 
+  display: grid;
+  grid-template-rows: auto 1fr auto;  /* header / main / footer */
+  gap: 16px;
+}
+
+/* Giving nav and main same background color */
+nav, main { 
+  
+  background: #f8fbfc; }
+
+/* Styling both header and footer separately for clear identity. I'm using darkcyan with white text so they stand out */
+header, footer {
+  
+  background: darkcyan;
+  color: #fff;
+  padding: 16px;
+}
+header { 
+  
+  text-align: left; }
+footer { 
+  
+  text-align: center; }
+
+/* Making the content stack by default which ensures it looks good on smaller screens */
+.content { 
+  
+  display: block; }
+
+/* Switching to flex layout for larger screens, this places nav on the side and main next to it */
+@media (width >= 751px) {
+
+  .content {
+
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  nav { width: 30%; }
+}
+
+/* Capping main content to 70% width on wide screens. This keeps it readable instead of stretching too far */
+@media (width >= 1001px) {
+
+  main { width: 70%; }
+}
+
+/* Forcing main to full width when screens are narrower. This avoids squished layouts on smaller layouts */
+@media (width <= 1000px) {
+
+  .content { display: block; }
+  main { width: 100%; }
+}
+
+/* Styling nav with padding and list reset, I use flex column so links stack vertically */
+nav { padding: 16px; }
+nav ul {
+
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Styling nav list items with borders and backgroundst this makes them look like clickable buttons */
+nav li {
+
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px 16px;
+  background: #f9f9f9;
+}
+
+/* Styling nav links for bold and clear readability. I remove underlines and make them black by default */
+nav a {
+
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  display: block;
+}
+
+/* Adding hover and active states for nav items. This gives feedback when a user clicks or hovers */
+nav li:hover,
+nav li.active { 
+
+  background: darkcyan; }
+nav li:hover a,
+nav li.active a { 
+  
+  color: #fff; }
+nav a:focus {
+  outline: 3px solid #111;
+  outline-offset: 2px;
+}
+
+/* Styling main content with padding and centered text. This creates clean space for page information */
+main {
+
+  text-align: center;
+  padding: 24px;
+}
+
+/* Making images scale responsively. I add a profile-pic style for rounded framed portraits */
+img { 
+  
+  width: 100%; height: auto; }
+.profile-pic {
+
+  display: block;
+  margin: 16px auto;
+  width: 200px;
+  border-radius: 50%;
+  border: 3px solid darkcyan;
+}
+
+/* Creating helper classes for bullets, jobs, and projects. I limit width and align text left for better readability */
+.bullets, .job, .project, .divider {
+  text-align: left;
+  margin: 12px auto;
+  width: 800px;
+}
+.bullets li { 
+  
+  margin: 6px 0; }
+
+/* Building a calculator section that’s centered, I use flex to neatly align inputs and buttons */
+.calculator {
+
+  width: 800px;
+  margin: 0 auto;
+}
+.inputs,
+.buttons {
+
+  display: flex;
+  gap: 8px;
+  justify-content: center; /* Center flex items horizontally */
+}
+
+.inputs { 
+  
+  margin-top: 8px; }
+
+.buttons { 
+  
+  margin: 12px 0; }
+
+/* Styling calculator inputs with padding and rounded corners, this makes them easy to read and type into */
+.calculator input {
+
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  width: 180px;
+}
+
+/* Making calculator buttons to look clickable with hover effect */
+.calculator button {
+
+  padding: 10px 14px;
+  border: 2px solid #111;
+  border-radius: 8px;
+  background: #efefef;
+  cursor: pointer;
+}
+.calculator button:hover {
+
+  background: darkcyan;
+  color: #fff;
+}
+
+
+#output { height: 28px; }  
+
+/* On small screens, I let content blocks and the calculator span full width (this avoids horizontal scroll on phones) */
+@media (width <= 1000px) {
+
+
+  .job, .project, .bullets, .divider, .calculator { width: 100%; }
+}
+
+/* Restyling nav for mobile view by switching to row flex so links wrap and center */
+@media (width <= 750px) {
+
+
+  #page-wrapper { width: 92vw; }
+
+  header { text-align: center; } /*  Centers the text content within the <header> element */ 
+  nav { width: 100%; }
+  nav ul {
+
+
+    flex-direction: row;
+
+    flex-wrap: wrap;      /* Let items wrap to new lines */
+    justify-content: center; /* Center items horizontally */
+    gap: 8px;
+  }
+}
